@@ -29,7 +29,7 @@ app.get('/send', (req,res)=>{
   })
 })
 
-const port = process.env.PORT || 12345;
+const port = 3000;
 
 app.listen(port, ()=>{
   console.log('Dunder Mifflin, this is Pam.');
