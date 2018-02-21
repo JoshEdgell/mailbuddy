@@ -12,7 +12,6 @@ const smtpTransport = nodemailer.createTransport({
 })
 
 app.get('/send', (req,res)=>{
-  console.log(req.query);
   var messageBody = 'This message was sent from an automatic mailer.  The message body begins below the line.\n================================\n\n' + req.query.text
   const mailOptions = {
     to: req.query.to,
@@ -21,9 +20,9 @@ app.get('/send', (req,res)=>{
   }
   smtpTransport.sendMail(mailOptions, function(error,response){
     if (error){
-      console.log(error);
+      // console.log(error);
     } else {
-      console.log(response);
+      // console.log(response);
       res.send('sent');
     }
   })
