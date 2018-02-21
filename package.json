@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/JoshEdgell/mailbuddy/issues"
   },
-  "homepage": "https://github.com/JoshEdgell/mailbuddy#readme"
+  "homepage": "https://github.com/JoshEdgell/mailbuddy#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
