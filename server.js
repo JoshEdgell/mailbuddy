@@ -20,9 +20,9 @@ app.get('/send', (req,res)=>{
   }
   smtpTransport.sendMail(mailOptions, function(error,response){
     if (error){
-      // console.log(error);
+      console.log(error);
     } else {
-      // console.log(response);
+      console.log(response);
       res.send('sent');
     }
   })
