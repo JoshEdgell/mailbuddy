@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/JoshEdgell/mailbuddy#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "nodemon": "^1.17.1"
   }
 }
