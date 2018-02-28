@@ -2,7 +2,6 @@ const express               = require('express');
 const nodemailer            = require('nodemailer');
 const app                   = express();
 
-app.use(bodyParser.json());
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
