@@ -19,6 +19,6 @@
   "dependencies": {
     "express": "^4.16.2",
     "nodemon": "^1.17.1",
-    "cors": "2.8.4"
+    "cors": "^2.8.4"
   }
 }
