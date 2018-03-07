@@ -51,6 +51,10 @@ app.get('/send', cors(), (req,res)=>{
       res.send('sent');
     }
   })
+});
+
+app.get('/', (req,res)=>{
+  res.sendfile('index.html');
 })
 
 const port = process.env.PORT || 3000;

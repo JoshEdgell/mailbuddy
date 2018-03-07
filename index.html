@@ -2,21 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Mailer Page</title>
+    <title>Easy Mailer</title>
   </head>
   <body>
+    <h1>Welcome to Easy Mailer</h1>
+    <p>This is an automatic mailer app that I put together for sending form data from websites I've created.  Feel free to use it until I regret ever posting this thing because I've racked up some kind of weird Heroku charged I never knew existed.</p>
 
-    <h1>Attempt at a mailer</h1>
-    <input id="to" type="text" placeholder="Enter E-mail address"/></br>
-    <input id="subject" type="text" placeholder="Subject"/></br>
-    <textarea id="content" cols="40" rows="5" placeholder="Write message here"></textarea></br>
-    <button id="send_email">Send Email</button>
-    <span id="message"></span>
+    <p>It's pretty easy, just send a GET request to https://easymailer.herokuapp.com/send with an object consisting of the following: { to: (email address), subject: (desired subject), text: (message text) }</p>
 
-    <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+    <p>Emails will be sent from mistermailbuddy@gmail.com (I know, it's lame and I've been told it sounds sexual, but everything else that sounded relatably punny was taken)</p>
   </body>
 </html>
