@@ -1,7 +1,7 @@
 const express               = require('express');
 const nodemailer            = require('nodemailer');
 const cors                  = require('cors');
-const cors_proxy            = require('cors-anywhere');
+// const cors_proxy            = require('cors-anywhere');
 const app                   = express();
 
 // const allowCrossDomain = function(req,res,next){
@@ -55,17 +55,17 @@ app.get('/send', cors(), (req,res)=>{
 
 const port = process.env.PORT || 3000;
 
-const host = process.env.HOST || '0.0.0.0';
+// const host = process.env.HOST || '0.0.0.0';
 
-cors_proxy.createServer({
-  originWhitelist: [],
-  requireHeaer: ['origin', 'x-requested-with'],
-  removeHeaders: ['cookie', 'cookie2']
-}).listen(port, host, function(){
-  console.log('Running CORS Anywhere on ' + host + ':' + port);
-})
-
-// app.listen(port, ()=>{
-//   console.log('Dunder Mifflin, this is Pam.');
-//   console.log('Michael Scott, extension ' + port)
+// cors_proxy.createServer({
+//   originWhitelist: [],
+//   requireHeaer: ['origin', 'x-requested-with'],
+//   removeHeaders: ['cookie', 'cookie2']
+// }).listen(port, host, function(){
+//   console.log('Running CORS Anywhere on ' + host + ':' + port);
 // })
+
+app.listen(port, ()=>{
+  console.log('Dunder Mifflin, this is Pam.');
+  console.log('Michael Scott, extension ' + port)
+})
