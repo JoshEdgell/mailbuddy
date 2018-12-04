@@ -3,7 +3,7 @@ const nodemailer            = require('nodemailer');
 const cors                  = require('cors');
 const app                   = express();
 // app.use(cors());
-var whitelist = ['http://www.mollyvyoung.com', 'http://joshedgell.com']
+var whitelist = ['http://www.mollyvyoung.com', 'http://joshedgel.com']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
