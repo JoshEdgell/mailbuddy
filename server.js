@@ -12,18 +12,11 @@ var corsOptions = {
       callback(new Error('Not allowed by CORS'))
     }
   },
-  methods: 'GET,PUT,POST',
-  allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Content-Type, application/json, Access-Control-Request-Headers, Access-Control-Allow-Origin'
+  // methods: 'GET,PUT,POST',
+  // allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Content-Type, application/json, Access-Control-Request-Headers, Access-Control-Allow-Origin'
+  optionsSuccessStatus: 200
 
 }
-
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", '*');
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-    next();
-});
 
 const smtpTransport = nodemailer.createTransport({
   service: 'gmail',
@@ -35,6 +28,7 @@ const smtpTransport = nodemailer.createTransport({
 })
 
 app.get('/send', cors(corsOptions), (req,res)=>{
+  res.json({msg: 'This is CORS-enabled'})
   var messageBody = 'This message was sent from an automatic mailer.  The message body begins below the line.\n================================\n\n' + req.query.text
   const mailOptions = {
     to: req.query.to,
