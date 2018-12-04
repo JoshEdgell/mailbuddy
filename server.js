@@ -13,6 +13,7 @@ var corsOptions = {
     }
   },
   methods: 'GET,PUT,POST',
+  allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Content-Type, application/json, Access-Control-Request-Headers, Access-Control-Allow-Origin'
 
 }
 
