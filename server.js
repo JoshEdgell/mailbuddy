@@ -1,31 +1,26 @@
 const express               = require('express');
 const nodemailer            = require('nodemailer');
 const cors                  = require('cors');
-// const cors_proxy            = require('cors-anywhere');
 const app                   = express();
+// app.use(cors());
+var whitelist = ['http://www.mollyvyoung.com', 'http://www.joshedgell.com']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 
-// const allowCrossDomain = function(req,res,next){
-//   res.header("Access-Control-Allow-Origin", '*');
-//   res.header("Access-Control-Allow-Credentials", true);
-//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-//   res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-//   if ('OPTIONS' == req.method) {
-//     res.send(200);
-//   } else {
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", '*');
+//     res.header("Access-Control-Allow-Credentials", true);
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+//     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
 //     next();
-//   }
-// }
-//
-// app.use(allowCrossDomain);
-app.use(cors());
-
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", '*');
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-    next();
-});
+// });
 
 const smtpTransport = nodemailer.createTransport({
   service: 'gmail',
@@ -36,7 +31,7 @@ const smtpTransport = nodemailer.createTransport({
   }
 })
 
-app.get('/send', cors(), (req,res)=>{
+app.get('/send', cors(corsOptions), (req,res)=>{
   var messageBody = 'This message was sent from an automatic mailer.  The message body begins below the line.\n================================\n\n' + req.query.text
   const mailOptions = {
     to: req.query.to,
@@ -58,16 +53,6 @@ app.get('/', (req,res)=>{
 })
 
 const port = process.env.PORT || 3000;
-
-// const host = process.env.HOST || '0.0.0.0';
-
-// cors_proxy.createServer({
-//   originWhitelist: [],
-//   requireHeaer: ['origin', 'x-requested-with'],
-//   removeHeaders: ['cookie', 'cookie2']
-// }).listen(port, host, function(){
-//   console.log('Running CORS Anywhere on ' + host + ':' + port);
-// })
 
 app.listen(port, ()=>{
   console.log('Dunder Mifflin, this is Pam.');
