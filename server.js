@@ -12,8 +12,8 @@ var corsOptions = {
       callback(new Error('Not allowed by CORS'))
     }
   },
-  // methods: 'GET,PUT,POST',
-  // allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Content-Type, application/json, Access-Control-Request-Headers, Access-Control-Allow-Origin'
+  methods: 'GET,PUT,POST',
+  allowedHeaders: 'Access-Control-Allow-Origin',
   optionsSuccessStatus: 200
 
 }
