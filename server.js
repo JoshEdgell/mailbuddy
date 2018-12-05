@@ -6,15 +6,15 @@ const app                   = express();
 var whitelist = ['http://www.mollyvyoung.com', 'http://joshedgell.com']
 var corsOptions = {
   origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
     }
   },
-  methods: 'GET,PUT,POST',
-  allowedHeaders: 'Access-Control-Allow-Origin',
-  optionsSuccessStatus: 200
+  // methods: 'GET,PUT,POST',
+  // allowedHeaders: 'Access-Control-Allow-Origin',
+  // optionsSuccessStatus: 200
 
 }
 
