@@ -8,7 +8,7 @@ const app                   = express();
 // const whiteList = 'http://mollyvyoung.com'
 
 const corsOptions = {
-  origin: ['mollyvyoung.com', 'http://joshedgell.com'],
+  origin: ['http://mollyvyoung.com', 'http://joshedgell.com'],
   optionsSuccessStatus: 200
 }
 
@@ -27,7 +27,7 @@ let transporter = nodemailer.createTransport({
 })
 
 app.get('/send', cors(corsOptions), (req,res)=>{
-  res.json({msg:"this looks like it is working"})
+  // res.json({msg:"this looks like it is working"})
     const messageBody = 'This message was sent from an automatic mailer.  The message body begins below the line.\n================================\n\n' + req.query.text
     const mailOptions = {
       to: req.query.to,
