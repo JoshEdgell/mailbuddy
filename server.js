@@ -4,7 +4,7 @@ const cors                  = require('cors');
 const dotenv                = require('dotenv').config();
 const app                   = express();
 
-const whiteList = process.env.WHITELIST
+const whiteList = ['http://mollyvyoung.com', 'http://joshedgell.com']
 
 const corsOptions = {
   origin: whiteList,
