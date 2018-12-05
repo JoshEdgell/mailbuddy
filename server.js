@@ -15,7 +15,8 @@ const corsOptions = {
   //     callback(new Error('Not allowed by CORS'))
   //   }
   // }
-  origin: whiteList
+  origin: whiteList,
+  allowedHeaders: 'origin'
 }
 
 const transporter = nodemailer.createTransport({
