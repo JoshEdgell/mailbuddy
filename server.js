@@ -16,9 +16,9 @@ const corsOptions = {
   //   }
   // }
   // origin: whiteList,
-  origin: false,
+  origin: true,
   methods: 'GET',
-  allowedHeaders: 'Access-Control-Allow-Origin, Origin',
+  allowedHeaders: 'Access-Control-Allow-Origin', 'Origin',
   headers: {
     'Access-Control-Allow-Origin' : whiteList
   }
