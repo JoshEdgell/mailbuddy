@@ -15,7 +15,7 @@ const corsOptions = {
   //     callback(new Error('Not allowed by CORS'))
   //   }
   // }
-  origin: whiteList,
+  origin: 'http://joshedgell.com',
   allowedHeaders: 'origin'
 }
 
