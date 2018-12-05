@@ -21,7 +21,8 @@ const corsOptions = {
   allowedHeaders: 'Access-Control-Allow-Origin', 'Origin',
   headers: {
     'Access-Control-Allow-Origin' : whiteList
-  }
+  },
+  preflightContinue: true
 }
 
 const transporter = nodemailer.createTransport({
