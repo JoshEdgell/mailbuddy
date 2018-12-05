@@ -41,7 +41,7 @@ const allowCrossDomain = function(req,res,next){
 app.use(allowCrossDomain);
 app.use(cors());
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", '*');
+    res.header("Access-Control-Allow-Origin", whiteList);
     res.header("Access-Control-Allow-Credentials", true);
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
@@ -59,7 +59,7 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-app.get('/send', cors(), (req,res)=>{
+app.get('/send', cors(/* sI don't know what should go in here, if anything */), (req,res)=>{
   res.json({msg: 'This is CORS-enabled'})
 
 
