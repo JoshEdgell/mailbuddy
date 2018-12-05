@@ -10,10 +10,31 @@ const corsOptions = {
   optionsSuccessStatus: 200
 }
 
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
+  auth: {
+    user: 'mistermailbuddy@gmail.com',
+    pass: 'mypasswordistaco'
+  }
+})
+
 app.get('/send', cors(corsOptions), (req,res)=>{
-  res.json({
-    msg: 'This is CORS-enabled for whitelisted domains'
-  })
+    var messageBody = 'This message was sent from an automatic mailer.  The message body begins below the line.\n================================\n\n' + req.query.text
+    const mailOptions = {
+      to: req.query.to,
+      subject: req.query.subject,
+      text: messageBody
+    }
+    transporter.sendMail(mailOptions, function(error, response){
+      if (error){
+        res.json(error, 'You done messed up, A-a-ron!')
+      } else {
+        res.json(response, 'message sent')
+      }
+    })
 })
 
 // app.get('/send', (req,res)=>{
