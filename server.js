@@ -4,8 +4,10 @@ const cors                  = require('cors');
 const dotenv                = require('dotenv').config();
 const app                   = express();
 
+const whiteList = process.env.WHITELIST
+
 const corsOptions = {
-  origin: process.env.WHITELIST,
+  origin: whiteList,
   optionsSuccessStatus: 200
 }
 
