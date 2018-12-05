@@ -11,7 +11,7 @@ const originName = function(origin){
 };
 
 const corsOptions = {
-  origin: originName(origin),
+  origin: whiteList,
   optionsSuccessStatus: 200
 }
 
