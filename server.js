@@ -1,9 +1,10 @@
 const express               = require('express');
 const nodemailer            = require('nodemailer');
 const cors                  = require('cors');
+const dotenv                = require('dotenv').config();
 const app                   = express();
 
-const whiteList = ['http://mollyvyoung.com', 'http://joshedgell.com']
+const whiteList = process.env.WHITELIST
 // const whiteList = 'http://mollyvyoung.com'
 
 const corsOptions = {
@@ -17,8 +18,8 @@ let transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: 'mistermailbuddy@gmail.com',
-    pass: 'mypasswordistaco'
+    user: process.env.USERNAME,
+    pass: process.env.USERPASS
   }
 })
 
