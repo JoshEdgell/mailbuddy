@@ -3,15 +3,16 @@ const nodemailer            = require('nodemailer');
 const cors                  = require('cors');
 const app                   = express();
 
+const whiteList = ['http://mollyvyoung.com', 'http://joshedgell.com']
 
 const corsOptions = {
-  origin: 'http://joshedgell.com',
+  origin: whiteList,
   optionsSuccessStatus: 200
 }
 
 app.get('/send', cors(corsOptions), (req,res)=>{
   res.json({
-    msg: 'This is CORS-enabled for all origins'
+    msg: 'This is CORS-enabled for whitelisted domains'
   })
 })
 
