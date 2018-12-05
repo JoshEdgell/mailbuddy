@@ -36,6 +36,10 @@ const transporter = nodemailer.createTransport({
 });
 
 app.get('/send', cors(corsOptions), (req,res)=>{
+  res.json({msg: 'This is CORS-enabled'})
+
+
+
   var messageBody = 'This message was sent from an automatic mailer.  The message body begins below the line.\n================================\n\n' + req.query.text
   const mailOptions = {
     to: req.query.to,
