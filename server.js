@@ -24,20 +24,20 @@ let transporter = nodemailer.createTransport({
 
 app.get('/send', cors(corsOptions), (req,res)=>{
   // res.json({msg:"this looks like it is working"})
-    var messageBody = 'This message was sent from an automatic mailer.  The message body begins below the line.\n================================\n\n' + req.query.text
+    const messageBody = 'This message was sent from an automatic mailer.  The message body begins below the line.\n================================\n\n' + req.query.text
     const mailOptions = {
       to: req.query.to,
       subject: req.query.subject,
       text: messageBody
-    }
-    res.json(mailOptions)
-    // transporter.sendMail(mailOptions, function(error, response){
-    //   if (error){
-    //     res.json(error, 'You done messed up, A-a-ron!')
-    //   } else {
-    //     res.json(response, 'message sent')
-    //   }
-    // })
+    };
+    // res.json(mailOptions) //This worked
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          res.json(error, 'this is the error, dumbass.')
+        } else {
+          res.json(info, 'Josh, you are a dumbass.')
+        }
+    });
 })
 
 // app.get('/send', (req,res)=>{
