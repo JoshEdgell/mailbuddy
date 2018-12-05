@@ -8,11 +8,11 @@ const app                   = express();
 // const whiteList = 'http://mollyvyoung.com'
 
 const corsOptions = {
-  origin: ['http://mollyvyoung.com','http://joshedgell.com'],
+  origin: 'http://joshedgell.com',
   optionsSuccessStatus: 200
 }
 
-let transporter = nodemailer.createTransport("SMTP", {
+let transporter = nodemailer.createTransport({
   service: 'Gmail',
   host: 'smtp.gmail.com',
   port: 465,
