@@ -12,7 +12,7 @@ const corsOptions = {
 }
 
 let transporter = nodemailer.createTransport({
-  service: 'gmail',
+  // service: 'gmail',
   host: 'smtp.gmail.com',
   port: 465,
   secure: true,
@@ -31,11 +31,16 @@ app.get('/send', cors(corsOptions), (req,res)=>{
       text: messageBody
     };
     // res.json(mailOptions) //This worked
+
+
+
+
+    // Checking transporter.verify above here
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-          res.json(error, 'this is the error, dumbass.')
+          res.json(error)
         } else {
-          res.json(info, 'Josh, you are a dumbass.')
+          res.json(info)
         }
     });
 })
