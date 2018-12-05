@@ -5,7 +5,7 @@ const dotenv                = require('dotenv').config();
 const app                   = express();
 
 const corsOptions = {
-  origin: ['http://mollyvyoung.com', 'http://joshedgell.com'],
+  origin: process.env.WHITELIST,
   optionsSuccessStatus: 200
 }
 
