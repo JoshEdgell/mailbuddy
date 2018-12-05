@@ -6,14 +6,12 @@ const app                   = express();
 
 const whiteList = ['http://mollyvyoung.com', 'http://joshedgell.com']
 
+const originName = function(origin)=>{
+  return whiteList[whiteList.indexOf(origin)]
+};
+
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (whiteList.indexOf(origin) !== -1) {
-      whiteList[whiteList.indexOf(origin)]
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: originName(origin),
   optionsSuccessStatus: 200
 }
 
