@@ -33,21 +33,21 @@ app.get('/send', cors(corsOptions), (req,res)=>{
       to: req.query.to,
       subject: req.query.subject,
       text: messageBody
-      // In the future, this can be improved by sending an html key with HTML tags and all that shit for a much better-looking message.
+      // In the future, this can be improved by sending an html key that is a string of HTML and all that shit for a much better-looking message.
     };
-    res.json(mailOptions) //This worked
+    // res.json(mailOptions) //This worked
 
 
 
 
     // Checking transporter.verify above here
-    // transporter.sendMail(mailOptions, (error, info) => {
-    //     if (error) {
-    //       res.json(error)
-    //     } else {
-    //       res.json(info)
-    //     }
-    // });
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          res.json(error)
+        } else {
+          res.json(info)
+        }
+    });
 })
 
 // app.get('/send', (req,res)=>{
