@@ -4,7 +4,12 @@ const cors                  = require('cors');
 const app                   = express();
 
 
-app.get('/send', cors(), (req,res)=>{
+const corsOptions = {
+  origin: 'http://joshedgell.com',
+  optionsSuccessStatus: 200
+}
+
+app.get('/send', cors(corsOptions), (req,res)=>{
   res.json({
     msg: 'This is CORS-enabled for all origins'
   })
