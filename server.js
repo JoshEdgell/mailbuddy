@@ -22,7 +22,7 @@ const corsOptions = {
   methods: 'GET',
   allowedHeaders: 'Access-Control-Allow-Origin', 'Origin',
   headers: {
-    'Access-Control-Allow-Origin' : whiteList
+    'Access-Control-Allow-Origin' : 'http://joshedgell.com' 
   },
   preflightContinue: true
 }
