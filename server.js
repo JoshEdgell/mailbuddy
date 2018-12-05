@@ -25,7 +25,9 @@ const smtpTransport = nodemailer.createTransport({
     user: 'mistermailbuddy@gmail.com',
     pass: 'mypasswordistaco'
   }
-})
+});
+
+app.options('*', cors());
 
 app.get('/send', cors(corsOptions), (req,res)=>{
   var messageBody = 'This message was sent from an automatic mailer.  The message body begins below the line.\n================================\n\n' + req.query.text
