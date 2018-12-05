@@ -20,7 +20,7 @@ const corsOptions = {
   methods: 'GET',
   allowedHeaders: 'Access-Control-Allow-Origin, Origin',
   headers: {
-    'Access-Control-Allow-Origin' : 'Origin'
+    'Access-Control-Allow-Origin' : whiteList
   }
 }
 
