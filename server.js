@@ -3,9 +3,8 @@ const nodemailer            = require('nodemailer');
 const cors                  = require('cors');
 const app                   = express();
 
-app.use(cors());
 
-app.get('/send', (req,res)=>{
+app.get('/send', cors(), (req,res)=>{
   res.json({
     msg: 'This is CORS-enabled for all origins'
   })
