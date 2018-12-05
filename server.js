@@ -30,7 +30,7 @@ app.get('/send', cors(corsOptions), (req,res)=>{
       subject: req.query.subject,
       text: messageBody
     }
-    res.json(messageBody)
+    res.json(mailOptions)
     // transporter.sendMail(mailOptions, function(error, response){
     //   if (error){
     //     res.json(error, 'You done messed up, A-a-ron!')
