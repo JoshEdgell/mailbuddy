@@ -4,11 +4,11 @@ const cors                  = require('cors');
 const dotenv                = require('dotenv').config();
 const app                   = express();
 
-const whiteList = process.env.WHITELIST
+// const whiteList = process.env.WHITELIST
 // const whiteList = 'http://mollyvyoung.com'
 
 const corsOptions = {
-  origin: whiteList,
+  origin: process.env.WHITELIST,
   optionsSuccessStatus: 200
 }
 
@@ -35,19 +35,19 @@ app.get('/send', cors(corsOptions), (req,res)=>{
       text: messageBody
       // In the future, this can be improved by sending an html key with HTML tags and all that shit for a much better-looking message.
     };
-    // res.json(mailOptions) //This worked
+    res.json(mailOptions) //This worked
 
 
 
 
     // Checking transporter.verify above here
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          res.json(error)
-        } else {
-          res.json(info)
-        }
-    });
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //     if (error) {
+    //       res.json(error)
+    //     } else {
+    //       res.json(info)
+    //     }
+    // });
 })
 
 // app.get('/send', (req,res)=>{
