@@ -12,13 +12,16 @@ const corsOptions = {
   optionsSuccessStatus: 200
 }
 
-let transporter = nodemailer.createTransport({
-  // service: 'gmail',
+let transporter = nodemailer.createTransport("SMTP", {
+  service: 'Gmail',
   host: 'smtp.gmail.com',
   port: 465,
   secure: true,
   auth: {
     user: process.env.USERNAME,
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    refreshToken: process.env.REFRESH_TOKEN,
     pass: process.env.USERPASS
   }
 })
@@ -30,6 +33,7 @@ app.get('/send', cors(corsOptions), (req,res)=>{
       to: req.query.to,
       subject: req.query.subject,
       text: messageBody
+      // In the future, this can be improved by sending an html key with HTML tags and all that shit for a much better-looking message.
     };
     // res.json(mailOptions) //This worked
 
