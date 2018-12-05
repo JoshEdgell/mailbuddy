@@ -7,7 +7,13 @@ const app                   = express();
 const whiteList = ['http://mollyvyoung.com', 'http://joshedgell.com']
 
 const corsOptions = {
-  origin: whiteList,
+  origin: function (origin, callback) {
+    if (whiteList.indexOf(origin) !== -1) {
+      whiteList[whiteList.indexOf(origin)];
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
   optionsSuccessStatus: 200
 }
 
