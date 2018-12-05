@@ -6,7 +6,7 @@ const app                   = express();
 
 const whiteList = ['http://mollyvyoung.com', 'http://joshedgell.com']
 
-const originName = function(origin)=>{
+const originName = function(origin){
   return whiteList[whiteList.indexOf(origin)]
 };
 
