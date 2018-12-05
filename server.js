@@ -15,8 +15,9 @@ const corsOptions = {
   //     callback(new Error('Not allowed by CORS'))
   //   }
   // }
-  origin: 'http://joshedgell.com',
-  allowedHeaders: 'origin'
+  origin: whiteList,
+  methods: 'GET',
+  allowedHeaders: 'Access-Control-Allow-Origin, Origin'
 }
 
 const transporter = nodemailer.createTransport({
