@@ -8,7 +8,7 @@ const app                   = express();
 // const whiteList = 'http://mollyvyoung.com'
 
 const corsOptions = {
-  origin: 'http://joshedgell.com',
+  origin: ['mollyvyoung.com', 'http://joshedgell.com'],
   optionsSuccessStatus: 200
 }
 
