@@ -3,32 +3,30 @@ const nodemailer            = require('nodemailer');
 const cors                  = require('cors');
 const app                   = express();
 
-app.use(cors());
-var whitelist = ['http://www.mollyvyoung.com', 'http://joshedgell.com']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
+const whiteList = [
+  'http://joshedgell.com',
+  'http://mollyvyoung.com'
+]
+const corsOptions = {
+  origin: function(origin, callback){
+    if (whiteList.indexOf(origin) !== -1) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
     }
-  },
-  // methods: 'GET,PUT,POST',
-  // allowedHeaders: 'Access-Control-Allow-Origin',
-  // optionsSuccessStatus: 200
-
+  }
 }
 
-const smtpTransport = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
   service: 'gmail',
   host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
     user: 'mistermailbuddy@gmail.com',
     pass: 'mypasswordistaco'
   }
 });
-
-app.options('*', cors());
 
 app.get('/send', cors(corsOptions), (req,res)=>{
   var messageBody = 'This message was sent from an automatic mailer.  The message body begins below the line.\n================================\n\n' + req.query.text
@@ -37,11 +35,10 @@ app.get('/send', cors(corsOptions), (req,res)=>{
     subject: req.query.subject,
     text: messageBody
   }
-  smtpTransport.sendMail(mailOptions, function(error,response){
+  transporter.sendMail(mailOptions, function(error,response){
     if (error){
-      console.log(error);
+      res.json(error, 'error from transporter.sendMail')
     } else {
-      console.log(response);
       res.json(response);
     }
   })
